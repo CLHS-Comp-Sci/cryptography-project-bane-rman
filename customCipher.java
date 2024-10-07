@@ -55,11 +55,15 @@ public class customCipher
                     key += key;
                 }
                 int[] keyInt = keyMake(key);
-                System.out.println();
                 String deciphered = decrypt(textInt, keyInt);
                 System.out.println("Decrypted: " + deciphered);
             }
+            else
+            {
+                break;
+            }
         }
+        
         
     }
     
@@ -111,6 +115,7 @@ public class customCipher
         {
             textList[i] = text.substring(i,i+1);
             textList[i] = toBinary(textList[i]);
+            textList[i] = textList[i].substring(5) + textList[i].substring(0,5);
             textInt[i] = toDecimal(textList[i]);
             textInt[i] = textInt[i] * key[i];
             textList[i] = fromDecimal(textInt[i]);
@@ -135,6 +140,7 @@ public class customCipher
             {
                 textList[i] = "0" + textList[i];
             }
+            textList[i] = textList[i].substring(3) + textList[i].substring(0,3);
             textList[i] = fromBinary(textList[i]);
             text += textList[i];
         }
